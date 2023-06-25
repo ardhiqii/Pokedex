@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar/navbar";
 import Home from "./pages/home/Home";
 import Bags from "./pages/bags/Bags";
 import pokeball from "./assets/pokeball.png"
 import Detail from "./pages/detail/Detail";
 import { useEffect } from "react";
+import Navbar from "./components/navbar/NavbarCustom";
 function App() {
   useEffect(()=>{
     let pokemon = localStorage.getItem("pokemon")
@@ -16,7 +16,7 @@ function App() {
   },[])
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <img src={pokeball} className={"background"} />
       <Routes>
         <Route path="/" element={<Home />} />

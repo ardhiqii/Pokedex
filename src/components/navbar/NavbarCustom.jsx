@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./navbar.module.css";
-import pokeball from "../../assets/pokeball.png"
-import backpack from "../../assets/backpack.png"
-const Navbar = () => {
+import pokeball from "../../assets/pokeball.png";
+import backpack from "../../assets/backpack.png";
+const NavbarCustom = () => {
   return (
     <>
       <div className={styles.container}>
@@ -10,15 +10,22 @@ const Navbar = () => {
           <li className={styles.li}>
             <NavLink
               to="/"
-              className={({isActive})=> isActive ? styles.active : styles.navLink}
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.navLink
+              }
             >
               <img src={pokeball} className={styles.icon} />
               All Pokemon
             </NavLink>
           </li>
           <li className={styles.li}>
-            <NavLink to="/bags" className={({isActive})=> isActive ? styles.active : styles.navLink} >
-            <img src={backpack} className={styles.icon} />
+            <NavLink
+              to="/bags"
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.navLink
+              }
+            >
+              <img src={backpack} className={styles.icon} />
               Bags
             </NavLink>
           </li>
@@ -28,4 +35,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarCustom;
