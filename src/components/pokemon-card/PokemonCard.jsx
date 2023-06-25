@@ -5,6 +5,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import DisplayType from "../display-type/DisplayType";
 import whoPokemon from "../../assets/who-that-pokemon.png"
+import Loading from "../loading/Loading";
 const PokemonCard = ({ name, api }) => {
   const [image, setImage] = useState("");
   const [types, setTypes] = useState([]);
@@ -27,7 +28,7 @@ const PokemonCard = ({ name, api }) => {
     };
     getImage();
   }, []);
-  if (loading) return "Loading Pokemon";
+  if (loading) return <Loading/>;
 
   return (
     <NavLink to={`/pokemon/${id}`} className={styles.container}>

@@ -6,6 +6,7 @@ import styles from "./home.module.css";
 import PokemonList from "../../components/pokemon-list/PokemonList";
 import ReactPaginate from "react-paginate";
 import pokeball from "../../assets/pokeball.png"
+import Loading from "../../components/loading/Loading";
 
 const limit = 10;
 const Home = () => {
@@ -37,10 +38,10 @@ const Home = () => {
 
     setPokemon(data);
   };
-  if (loading) return "Loading";
+  if (loading) return <Loading/>;
   return (
     <div className={styles.container}>
-      
+
       <PokemonList data={pokemon} />
       <div className={styles.paginationContainer}>
         <ReactPaginate
