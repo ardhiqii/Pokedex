@@ -2,6 +2,13 @@
 Pokedex is device that stores and retrieves data about all Pokemon and Pokemon that you catch.
 To catch or release the monster, in detail page there is Pokeball right after the pokemon's name. You can click it :D
 
+## Link Web
+https://pokedex-aufa.netlify.app/
+
+## Run the application
+1. `npm install`
+2. `npm run dev` to run in localhost
+
 ## Techs and Library
 The techs that I used in this project are in below:
 1. React
