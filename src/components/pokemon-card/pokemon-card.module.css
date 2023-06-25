@@ -1,0 +1,39 @@
+.container {
+  background-color: #ffffff;
+  text-decoration: none;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.12);
+  color: black;
+  justify-content: space-around;
+}
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 20px;
+  position: relative;
+  top: -12px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  height: 80px;
+}
+
+.typesContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+.image{
+  width: 100px;
+}

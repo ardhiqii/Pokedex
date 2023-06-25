@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    column-gap: 10px;
+    font-size: .70rem;
+    font-weight: 600;
+}
+.statContainer{
+    display: flex;
+    background-color: #f5f6f6;
+    flex-direction: column;
+    align-items: center;
+    width: 35px;
+    height: 60px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    justify-content: space-around;
+}
+.circle{
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

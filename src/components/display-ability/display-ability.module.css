@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  background-color: #f6f8f5;
+  border: 1px solid #7e7d79;
+  border-radius: 20px;
+  padding: 4px 8px;
+}
+
+.container p {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
