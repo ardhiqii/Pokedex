@@ -8,16 +8,13 @@ import DisplayAbility from "../display-ability/DisplayAbility";
 import DisplayStats from "../display-stats/DisplayStats";
 import whoPokemon from "../../assets/who-that-pokemon.png";
 import pokeball from "../../assets/pokeball-8bit.png";
-const PokemonDetail = ({ id, isCaptured, setShowModal,setIsCaptured }) => {
+const PokemonDetail = ({ id, isCaptured, setShowModal,setIsCaptured,setStatus,userPokemon }) => {
   const [pokemon, setPokemon] = useState();
   const [loading, setLoading] = useState(true);
-  const [userPokemon,setUserPokemon] = useState([])
   const API_URL = `https://pokeapi.co/api/v2/pokemon/${id}/`;
   useEffect(() => {
-    setUserPokemon(localStorage.getItem("pokemon"))
     if(userPokemon.includes(id)){
         setIsCaptured(true)
-
     }
     setLoading(true);
     const getData = async () => {
@@ -26,10 +23,14 @@ const PokemonDetail = ({ id, isCaptured, setShowModal,setIsCaptured }) => {
       setLoading(false);
     };
     getData();
-  }, [userPokemon]);
+  }, [userPokemon,isCaptured]);
 
   const showModalHandler = () => {
+    if(isCaptured){
+      setStatus(<h2>Release</h2>)
+    }
     setShowModal(true);
+    
   };
 
   if (loading) return "Loading";
@@ -55,7 +56,7 @@ const PokemonDetail = ({ id, isCaptured, setShowModal,setIsCaptured }) => {
       <div className={styles.info}>
         <div className={styles.nameContainer}>
           <h3>{name}</h3>
-          <button onClick={showModalHandler} disabled={isCaptured}>
+          <button onClick={showModalHandler}>
             <img
               src={pokeball}
               style={isCaptured ? { filter: "contrast(100)" } : {}}

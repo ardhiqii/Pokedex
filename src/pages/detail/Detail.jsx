@@ -12,7 +12,8 @@ const Detail = () => {
   const [status, setStatus] = useState(<h2>CATCH THE MONSTER</h2>);
   const [userPokemon,setUserPokemon] = useState(JSON.parse(localStorage.getItem("pokemon")))
   const { id } = useParams();
-  const PokemonDetailProps = { id, setShowModal, isCaptured,setIsCaptured };
+
+  const PokemonDetailProps = { id, setShowModal, isCaptured,setIsCaptured,setIsCaptured,setStatus,userPokemon };
 
 
   useEffect(()=>{
@@ -22,18 +23,24 @@ const Detail = () => {
     }
     const updateValue = JSON.stringify(userPokemon)
     localStorage.setItem("pokemon",updateValue)
-  },[userPokemon])
-  const updateStorage = () =>{
-    setUserPokemon((prev)=>[id,...prev])
+  },[userPokemon,isCaptured])
+
+
+  const updateStorage = (type) =>{
+    if(type == "add"){
+      setUserPokemon((prev)=>[id,...prev])
+    }else{
+      setUserPokemon(userPokemon.filter((currId)=> currId != id ))
+    }
   }
 
   const capturing = () => {
     setOnCapture(true);
-    const succes = Math.random < .5
+    const succes = true
     setStatus(succes ? <h2>Succed</h2> : <h2>Failed</h2>);
     setIsCaptured(succes);
     if(succes){
-        updateStorage()
+        updateStorage("add")
     }
     setTimeout(() => {
       setOnCapture(false);
@@ -43,6 +50,16 @@ const Detail = () => {
       setStatus(!succes && <h2>CATCH THE MONSTER</h2>);
     }, 6000);
   };
+
+  const remove = () =>{
+    console.log("remove");
+    updateStorage("remove")
+    setIsCaptured(false)
+    setTimeout(() => {
+      setStatus(<h2>CATCH THE MONSTER</h2>)
+      setShowModal(false);
+    }, 1000);
+  }
   return (
     <div className={styles.container}>
       <PokemonDetail {...PokemonDetailProps} />
@@ -54,13 +71,15 @@ const Detail = () => {
           {onCapture ? (
             <PokeballLoading />
           ) : (
+            <>
             <div
               className={styles.button}
               style={isCaptured ? { backgroundColor: "#a8ef8c" } : {}}
-              onClick={capturing}
+              onClick={ isCaptured ? remove : capturing}
             >
               {status}
             </div>
+            </>
           )}
         </div>
       </div>
