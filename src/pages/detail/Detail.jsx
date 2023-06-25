@@ -36,7 +36,7 @@ const Detail = () => {
 
   const capturing = () => {
     setOnCapture(true);
-    const succes = true
+    const succes = Math.random() < 0.5
     setStatus(succes ? <h2>Succed</h2> : <h2>Failed</h2>);
     setIsCaptured(succes);
     if(succes){
